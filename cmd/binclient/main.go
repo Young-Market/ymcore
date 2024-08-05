@@ -15,7 +15,7 @@ import (
 )
 
 var (
-	wavesNetwork = flag.String("waves-network", "", "Waves network.")
+	wavesNetwork = flag.String("ym-network", "", "YM network.")
 	address      = flag.String("address", "", "Address connect to.")
 	version      = flag.String("version", "", "Version, for example: (0.15.1).")
 )
@@ -44,7 +44,7 @@ func init() {
 
 func main() {
 	if *wavesNetwork == "" {
-		zap.S().Fatal("please, provide 'waves-network' CLI argument")
+		zap.S().Fatal("please, provide 'ym-network' CLI argument")
 	}
 	if *address == "" {
 		zap.S().Fatal("please, provide 'address' CLI argument")
