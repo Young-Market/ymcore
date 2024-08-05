@@ -14,7 +14,7 @@ If all blocks IDs are identical the node is on the same fork. If not, the utilit
 usage: chaincmp [flags]
   -h, --help                Print usage information (this message) and quit
   -n, --node string         URL of the node
-  -r, --references string   A list of space-separated URLs of reference nodes, for example "http://127.0.0.1:6869 https://nodes.wavesnodes.com" (default "https://nodes.wavesnodes.com")
+  -r, --references string   A list of space-separated URLs of reference nodes, for example "http://127.0.0.1:6869 https://nodes.youngmarket.net" (default "https://nodes.youngmarket.net")
       --silent              Produce no output except this help message; incompatible with "verbose"
       --verbose             Logs additional information; incompatible with "silent"
   -v, --version             Print version information and quit
@@ -26,7 +26,7 @@ In simple case you need to provide only the `-n` flag with the address of the no
 chaincmp -n http://127.0.0.1:6869
 ```
 
-The default reference node (https://nodes.wavesnodes.com) will be used. If no `http` or `https` is given, the default protocol `http` will be used.
+The default reference node (https://nodes.youngmarket.net) will be used. If no `http` or `https` is given, the default protocol `http` will be used.
 Other protocol are not supported and will lead to error.
 
 For the scripting purposes the `--silent` flag is useful.
