@@ -7,7 +7,7 @@ It can also be used to sign unsigned transactions while transforming their repre
 
 ```bash
   -scheme string
-        Network scheme byte. Defaults to 'W' (MainNet).
+        Network scheme byte. Defaults to 'Y' (MainNet).
   -to-json
         Convert the transaction to JSON representation. Sign the transaction if a private key is provided.
   -to-binary
@@ -33,7 +33,7 @@ The result of a transaction conversion can be piped to other utilities.
 
 For example, the transaction converted from a file can be piped to `curl`.
 ```bash
-./convert -private-key <private key base58> -to-json -in <transaction file> | curl -X POST -H 'accept: application/json' -H 'Content-Type: application/json' --data-binary @- 'https://nodes-testnet.wavesnodes.com/transactions/broadcast' 
+./convert -private-key <private key base58> -to-json -in <transaction file> | curl -X POST -H 'accept: application/json' -H 'Content-Type: application/json' --data-binary @- 'https://nodes-testnet..youngmarket.net/transactions/broadcast' 
 ```
 
 The source transaction for conversion can be read from STDIN.
@@ -43,5 +43,5 @@ The source transaction for conversion can be read from STDIN.
 
 Or both:
 ```bash
-convert -private-key <private key Base58> -to-json < ~/Temp/convert/transfer-unsigned.json | curl -X POST -H 'accept: application/json' -H 'Content-Type: application/json' --data-binary @- 'https://nodes-testnet.wavesnodes.com/transactions/broadcast'
+convert -private-key <private key Base58> -to-json < ~/Temp/convert/transfer-unsigned.json | curl -X POST -H 'accept: application/json' -H 'Content-Type: application/json' --data-binary @- 'https://nodes-testnet.youngmarket.net/transactions/broadcast'
 ```
