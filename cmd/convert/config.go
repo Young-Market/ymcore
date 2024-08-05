@@ -26,7 +26,7 @@ func (c *config) parse() error {
 	var (
 		scheme, privateKey, in, out string
 	)
-	flag.StringVar(&scheme, "scheme", "W", "Network scheme byte. Defaults to 'W' (MainNet).")
+	flag.StringVar(&scheme, "scheme", "Y", "Network scheme byte. Defaults to 'Y' (MainNet).")
 	flag.BoolVar(&c.toJSON, "to-json", false,
 		"Convert the transaction to JSON representation. Sign the transaction if a private key is provided.")
 	flag.BoolVar(&c.toBinary, "to-binary", false,
