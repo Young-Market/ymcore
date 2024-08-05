@@ -62,7 +62,7 @@ func run() error {
 	var silent bool
 
 	flag.StringVarP(&node, "node", "n", "", "URL of the node")
-	flag.StringVarP(&reference, "references", "r", defaultURL, "A list of space-separated URLs of reference nodes, for example \"http://127.0.0.1:6869 https://nodes.wavesnodes.com\"")
+	flag.StringVarP(&reference, "references", "r", defaultURL, "A list of space-separated URLs of reference nodes, for example \"http://127.0.0.1:6869 https://nodes.youngmarket.net\"")
 	flag.BoolVarP(&showHelp, "help", "h", false, "Print usage information (this message) and quit")
 	flag.BoolVarP(&showVersion, "version", "v", false, "Print version information and quit")
 	flag.BoolVar(&verbose, "verbose", false, "Logs additional information; incompatible with \"silent\"")
