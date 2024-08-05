@@ -4,7 +4,7 @@ Go implementation of Young Market Node, libraries and tools for Young Market blo
 
 ## YM Node
 
-It is possible to run Waves Node on Linux, macOS or Windows. Please, download an appropriate binary file from [Releases page](https://github.com/Young-Market/ymcore/releases).
+It is possible to run YM Node on Linux, macOS or Windows. Please, download an appropriate binary file from [Releases page](https://github.com/Young-Market/ymcore/releases).
 
 You can either synchronize a node over network or import a downloaded blockchain file.
 
