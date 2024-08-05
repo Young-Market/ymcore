@@ -1,26 +1,21 @@
-# gowaves
+# ymcore
 
-Go implementation of Waves Node, libraries and tools for Waves blockchain.
+Go implementation of Young Market Node, libraries and tools for Young Market blockchain.
 
-![](https://github.com/wavesplatform/gowaves/workflows/build/badge.svg)
-[![Go Report Card](https://goreportcard.com/badge/github.com/wavesplatform/gowaves)](https://goreportcard.com/report/github.com/wavesplatform/gowaves)
-[![codecov](https://codecov.io/gh/wavesplatform/gowaves/branch/master/graph/badge.svg)](https://codecov.io/gh/wavesplatform/gowaves)
-[![GoDoc](https://godoc.org/github.com/wavesplatform/gowaves?status.svg)](https://godoc.org/github.com/wavesplatform/gowaves)
+## YM Node
 
-## Waves Node
-
-It is possible to run Waves Node on Linux, macOS or Windows. Please, download an appropriate binary file from [Releases page](https://github.com/wavesplatform/gowaves/releases).
+It is possible to run Waves Node on Linux, macOS or Windows. Please, download an appropriate binary file from [Releases page](https://github.com/Young-Market/ymcore/releases).
 
 You can either synchronize a node over network or import a downloaded blockchain file.
 
 ### How to import blockchain from file
 
-Blockchain files are available on [MainNet](http://blockchain.wavesnodes.com), [TestNet](http://blockchain-testnet.wavesnodes.com) [StageNet](http://blockchain-stagenet.wavesnodes.com/) download pages.
+Blockchain files are available on [MainNet](http://blockchain.youngmarket.net), [TestNet](http://blockchain-testnet.youngmarket.net) [StageNet](http://blockchain-stagenet.youngmarket.net/) download pages.
 
 Import could be done as follows:
 
 1. Download a blockchain file
-1. Download the `importer` utility from [Releases](https://github.com/wavesplatform/gowaves/releases)
+1. Download the `importer` utility from [Releases](https://github.com/Young-Market/ymcore/releases)
 1. Run the command, put the path to the blockchain file and node's state directory as parameters.
    The third parameter is the number of blocks to import, it should be less than a desired height by one.
 
@@ -36,7 +31,7 @@ Please note that the Go Node has its own state storage structure that is incompa
 
 Run the node as follows:
 
-1. Download a suitable node's binary file from [Releases](https://github.com/wavesplatform/gowaves/releases)
+1. Download a suitable node's binary file from [Releases](https://github.com/Young-Market/ymcore/releases)
 1. Run the command, if required, put the path to the node's state directory.
 
 ```bash
@@ -48,7 +43,7 @@ By default, the node is run as a MainNet node. To run a TestNet node put `testne
 ./node -state-path [path to node state directory] -blockchain-type testnet
 ``` 
 
-Read more about [running the node as Linux service](https://github.com/wavesplatform/gowaves/tree/master/cmd/node#readme).
+Read more about [running the node as Linux service](https://github.com/Young-Market/ymcore/tree/master/cmd/node#readme).
 
 ### How to set block generation
 
@@ -62,14 +57,14 @@ Go Node has two parameters which allow the loading of private keys from a wallet
 For example:
 
 ```
-./node -state-path ~/gowaves-testnet/ -blockchain-type testnet -wallet-path ~/testnet.wallet -wallet-password 'some super secret password' 
+./node -state-path ~/ymcore-testnet/ -blockchain-type testnet -wallet-path ~/testnet.wallet -wallet-password 'some super secret password' 
 ```
 
 Once the parameters were provided, the node would try loading and using private keys to generate blocks.
 
 #### How to create a wallet file
 
-To create a wallet file use the `wallet` utility. Please download a suitable version of the `wallet` utility from the [Releases](https://github.com/wavesplatform/gowaves/releases) page.
+To create a wallet file use the `wallet` utility. Please download a suitable version of the `wallet` utility from the [Releases](https://github.com/Young-Market/ymcore/releases) page.
 The following command will create and add a new seed to the wallet file:
 
 ```bash
@@ -85,7 +80,7 @@ Also, it's possible to import existing seed phrase. Please, use `-seed-phrase` o
 ```
 
 If you have a Base58 encoded seed phrase from Scala node configuration file. There is an option `-seed-phrase-base58` to import it.
-Also, this Base58 encoded seed phrase can be exported from Waves.Exchange wallet using `Settings | Security | Encoded Seed Phrase` menu option.
+Also, this Base58 encoded seed phrase can be exported from  wallet using `Settings | Security | Encoded Seed Phrase` menu option.
 ```bash
 ./wallet -seed-phrase-base58 <string of Base58 encoded seed phrase>
 ```
@@ -156,7 +151,7 @@ Sign the transaction with the private key:
 
 Create new HTTP client to send the transaction to public TestNet nodes:
 ```go
-    client, err := client.NewClient(client.Options{BaseUrl: "https://testnodes.wavesnodes.com", Client: &http.Client{}})
+    client, err := client.NewClient(client.Options{BaseUrl: "https://testnodes.youngmarket.net", Client: &http.Client{}})
     if err != nil {
         panic(err)
     }
@@ -172,7 +167,7 @@ Send the transaction to the network:
 
 ### What's done
 
-* Full blockchain support of Waves Protocol version 1.4
+* Full blockchain support of YM Protocol version 1.4
 * Full support of RIDE version 6
 * Full support of gRPC API
 * Full support of Metamask API
@@ -201,8 +196,3 @@ make release-importer
 make release-node
 ...
 ```
-
-## Other Tools
-
-* [chaincmp](https://github.com/wavesplatform/gowaves/blob/master/cmd/chaincmp/README.md) - utility to compare blockchains on few nodes
-* [wmd](https://github.com/wavesplatform/gowaves/blob/master/cmd/wmd/README.md) - service to provide a market data for Waves DEX transactions
