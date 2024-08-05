@@ -28,7 +28,7 @@ const (
 	wavesAddressChecksumSize = 4
 	WavesAddressSize         = wavesAddressHeaderSize + wavesAddressBodySize + wavesAddressChecksumSize
 
-	wavesAddressVersion byte = 0x01
+	wavesAddressVersion byte = 0x40
 	aliasVersion        byte = 0x02
 
 	aliasFixedSize = 4
