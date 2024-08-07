@@ -82,7 +82,7 @@ func (a *NodeApi) rewardAtHeight(height proto.Height) (rewardInfoResponse, error
 	}
 	totalAmount, err := a.state.TotalWavesAmount(height)
 	if err != nil {
-		return rewardInfoResponse{}, errors.Wrap(err, "Failed get total waves amount at height")
+		return rewardInfoResponse{}, errors.Wrap(err, "Failed get total YM amount at height")
 	}
 	return rewardInfoResponse{
 		Height:              height,

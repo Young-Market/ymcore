@@ -1,4 +1,4 @@
-# node - Waves node implemented in Go
+# node - YM node implemented in Go
 
 ## Usage
 
@@ -36,29 +36,29 @@ To start a TestNet node use the command below.
 ## Running node on Linux
 
 The easiest way to run node on Linux is to install it from DEB package. 
-Download relevant DEB package from the [Releases](https://github.com/wavesplatform/gowaves/releases) page and install it with one of the following commands.
+Download relevant DEB package from the [Releases](https://github.com/Young-Market/ymcore/releases) page and install it with one of the following commands.
 
 ```bash
-sudo dpkg -i gowaves-mainnet-v0.10.0.deb
+sudo dpkg -i ymcore-mainnet-v0.10.0.deb
 
-sudo dpkg -i gowaves-testnet-v0.10.0.deb
+sudo dpkg -i ymcore-testnet-v0.10.0.deb
  
-sudo dpkg -i gowaves-stagenet-v0.10.0.deb
+sudo dpkg -i ymcore-stagenet-v0.10.0.deb
 ```
 
 Corresponding `systemd` will be created. 
 To start and stop, for example, the MainNet service use:
 
 ```bash
-sudo systemctl start gowaves-mainnet.service
+sudo systemctl start ymcore-mainnet.service
 
-sudo systemctl stop gowaves-mainnet.service
+sudo systemctl stop ymcore-mainnet.service
 ```
 
 To check the logs use `journalctl` utility.
 
 ```bash
-sudo journalctl -u gowaves-mainnet.service -f
+sudo journalctl -u ymcore-mainnet.service -f
 ```
 
 ## Building DEB packages
@@ -70,4 +70,4 @@ make release-node
 ```
 
 The DEB files are placed in the `build/dist` folder.
-For example, DEB package for MainNet will be named `gowaves-mainnet-0.10.0.deb`.
+For example, DEB package for MainNet will be named `ymcore-mainnet-0.10.0.deb`.

@@ -1,6 +1,6 @@
-PROJECT=gowaves
-ORGANISATION=wavesplatform
-MODULE=github.com/$(ORGANISATION)/$(PROJECT)
+PROJECT=ymcore
+ORGANISATION=youngmarket
+MODULE=github.com/Young-Market/ymcore
 SOURCE=$(shell find . -name '*.go' | grep -v vendor/)
 SOURCE_DIRS = cmd pkg
 

@@ -29,7 +29,7 @@ type Options struct {
 }
 
 var defaultOptions = Options{
-	BaseUrl: "https://nodes.wavesnodes.com",
+	BaseUrl: "https://nodes.youngmarket.net",
 	ChainID: proto.MainNetScheme,
 	Client:  &http.Client{Timeout: 3 * time.Second},
 }

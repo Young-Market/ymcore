@@ -12,8 +12,8 @@ import (
 )
 
 const (
-	scalaConfigFilename      = "waves.conf"
-	goConfigFilename         = "gowaves-it.json"
+	scalaConfigFilename      = "ym.conf"
+	goConfigFilename         = "ymcore-it.json"
 	templateScalaCfgFilename = "template.conf"
 
 	tmpDir = "../build/config"

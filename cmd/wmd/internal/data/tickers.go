@@ -13,7 +13,7 @@ type AssetID crypto.Digest
 
 func (v AssetID) MarshalJSON() ([]byte, error) {
 	if bytes.Equal(v[:], WavesID[:]) {
-		return []byte("\"WAVES\""), nil
+		return []byte("\"YM\""), nil
 	}
 	return crypto.Digest(v).MarshalJSON()
 }

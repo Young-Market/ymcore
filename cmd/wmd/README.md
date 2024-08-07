@@ -1,14 +1,14 @@
-# wmd - Waves Market Data
+# wmd - YM Market Data
 
 *Almost complete replacement for [WavesDataFeed](https://github.com/PyWaves/WavesDataFeed).*
 
-Waves Market Data (wmd) is a service that offers the HTTP API similar to WavesDataFeed's API, but lacks the WebSocket API.
-The state of `wmd` could be build using initial import of a [standard Waves blockchain file](http://blockchain.wavesnodes.com) 
+YM Market Data (wmd) is a service that offers the HTTP API similar to WavesDataFeed's API, but lacks the WebSocket API.
+The state of `wmd` could be build using initial import of a [standard YM blockchain file](http://blockchain.youngmarket.net) 
 or synchronizing with the mother-node's API (could take a long time).
 
 ## How it works
 
-`wmd` starts the HTTP API and runs the synchronization with the Waves node. From that node it gets the information about new 
+`wmd` starts the HTTP API and runs the synchronization with the YM node. From that node it gets the information about new 
 block, extracts transactions and builds historical market data in raw or candlestick formats.
 
 
@@ -39,7 +39,7 @@ usage: wmd [flags]
 
 ```
 
-In simple case, then `wmd` runs on the same machine where the Waves node runs, it's should be provided with
+In simple case, then `wmd` runs on the same machine where the YM node runs, it's should be provided with
 parameters without default values only.
 
 ```bash
@@ -47,9 +47,9 @@ wmd -db /var/lib/wmd/db/ -symbols /var/lib/wmd/symbols.txt
 ``` 
 
 Note that you have to create all the folders and give correct permissions on them. 
-The example of `symbols.txt` file could be found at [Github](https://github.com/wavesplatform/gowaves/blob/master/cmd/wmd/symbols.txt).
+The example of `symbols.txt` file could be found at [Github](https://github.com/Young-Market/ymcore/blob/master/cmd/wmd/symbols.txt).
 
-To quickly build the initial state of `wmd`, please, download the actual [blockchain file](http://blockchain.wavesnodes.com) 
+To quickly build the initial state of `wmd`, please, download the actual [blockchain file](http://blockchain.youngmarket.net) 
 and execute the following command.
 
 ```bash
@@ -77,7 +77,7 @@ RestartSec=10
 startLimitIntervalSec=60
 
 WorkingDirectory=/usr/share/wmd
-ExecStart=/usr/share/wmd/wmd -db /var/lib/wmd/ -address 0.0.0.0:6990 -node grpc.wavesnodes.com:6870 -symbols /usr/share/wmd/symbols.txt -sync-interval 10
+ExecStart=/usr/share/wmd/wmd -db /var/lib/wmd/ -address 0.0.0.0:6990 -node grpc.youngmarket.net:6870 -symbols /usr/share/wmd/symbols.txt -sync-interval 10
 # make sure log directory exists and owned by syslog
 PermissionsStartOnly=true
 ExecStartPre=/bin/mkdir -p /var/log/wmd
@@ -180,7 +180,7 @@ Get ticker for a specified asset pair.
 #### CURL
 
 ```sh
-curl -X GET "http://localhost:6990/api/ticker/WAVES/BTC"
+curl -X GET "http://localhost:6990/api/ticker/YM/BTC"
 ```
 
 ### **GET** - /api/trades/{AMOUNT_ASSET}/{PRICE_ASSET}/{LIMIT}
@@ -190,7 +190,7 @@ Get last `LIMIT` confirmed trades for a specified asset pair.
 #### CURL
 
 ```sh
-curl -X GET "http://localhost:6990/api/trades/WAVES/BTC/10"
+curl -X GET "http://localhost:6990/api/trades/YM/BTC/10"
 ```
 
 ### **GET** - /api/trades/{AMOUNT_ASSET}/{PRICE_ASSET}/{FROM_TIMESTAMP}/{TO_TIMESTAMP}
@@ -200,7 +200,7 @@ Get trades within `FROM_TIMESTAMP` - `TO_TIMESTAMP` time range.
 #### CURL
 
 ```sh
-curl -X GET "http://localhost:6990/api/trades/WAVES/BTC/1495296000000/1495296280000"
+curl -X GET "http://localhost:6990/api/trades/YM/BTC/1495296000000/1495296280000"
 ```
 
 ### **GET** - /api/trades/{AMOUNT_ASSET}/{PRICE_ASSET}/{ADDRESS}/{LIMIT}
@@ -210,7 +210,7 @@ Get trades for a specified asset pair and address.
 #### CURL
 
 ```sh
-curl -X GET "http://localhost:6990/api/trades/WAVES/BTC/3PCfUovRHpCoGL54UakGBTSDEXTbmYMU3ib/10"
+curl -X GET "http://localhost:6990/api/trades/YM/BTC/3PCfUovRHpCoGL54UakGBTSDEXTbmYMU3ib/10"
 ```
 
 ### **GET** - /api/candles/{AMOUNT_ASSET}/{PRICE_ASSET}/{TIMEFRAME}/{LIMIT}
@@ -220,7 +220,7 @@ Get last `LIMIT` candlesticks for the specified asset pair.
 #### CURL
 
 ```sh
-curl -X GET "http://localhost:6990/api/candles/WAVES/BTC/5/10"
+curl -X GET "http://localhost:6990/api/candles/YM/BTC/5/10"
 ```
 
 ### **GET** - /api/candles/{AMOUNT_ASSET}/{PRICE_ASSET}/{TIMEFRAME}/FROM_TIMESTAMP/TO_TIMESTAMP
@@ -230,5 +230,5 @@ Get candlesticks within `FROM_TIMESTAMP` - `TO_TIMESTAMP` time range for the spe
 #### CURL
 
 ```sh
-curl -X GET "http://localhost:6990/api/candles/WAVES/BTC/5/1495296000000/1495296280000"
+curl -X GET "http://localhost:6990/api/candles/YM/BTC/5/1495296000000/1495296280000"
 ```

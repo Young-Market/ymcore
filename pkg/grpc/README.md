@@ -1,4 +1,4 @@
-# Waves Node gRPC
+# YM Node gRPC
 
 ## Installation
 
@@ -34,5 +34,5 @@ If you want to regenerate the code from updated schemas:
 
 1. Make sure that tools which you installed on installation step are in the PATH
 
-2. Run `make proto` from the root of gowaves repo
+2. Run `make proto` from the root of ymcore repo
 

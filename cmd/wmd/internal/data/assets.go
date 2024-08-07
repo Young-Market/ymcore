@@ -8,7 +8,7 @@ import (
 var (
 	WavesID            = crypto.Digest{}
 	WavesIssuerAddress = proto.WavesAddress{}
-	WavesAssetInfo     = AssetInfo{ID: WavesID, Name: "WAVES", IssuerAddress: WavesIssuerAddress, Decimals: 8, Reissuable: false, Supply: 10000000000000000}
+	WavesAssetInfo     = AssetInfo{ID: WavesID, Name: "YM", IssuerAddress: WavesIssuerAddress, Decimals: 8, Reissuable: false, Supply: 50000000000000000}
 )
 
 type AssetInfo struct {

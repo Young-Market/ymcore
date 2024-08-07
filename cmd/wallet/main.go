@@ -39,7 +39,7 @@ var primaryFlags = []string{newOpt, showOpt, seedPhraseOpt, seedPhraseBase58Opt,
 
 const (
 	defaultBitSize    = 160
-	walletDefaultName = ".waves"
+	walletDefaultName = ".ym"
 )
 
 var usage = `
@@ -89,7 +89,7 @@ func main() {
 	flag.StringVar(&opts.base58AccountSeed, accountSeedBase58Opt, "", "Import a base58-encoded account seed (Primary flag)")
 	flag.StringVar(&walletPath, "wallet", "", "Path to the wallet file")
 	flag.IntVar(&accountNumber, "number", 0, "Account number. 0 is default")
-	flag.StringVar(&sch, schemeOpt, "W", "Network scheme: MainNet=W, TestNet=T, StageNet=S, CustomNet=E. MainNet is default")
+	flag.StringVar(&sch, schemeOpt, "Y", "Network scheme: MainNet=Y, TestNet=T, StageNet=S, CustomNet=E. MainNet is default")
 
 	flag.Parse()
 

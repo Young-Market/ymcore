@@ -1,7 +1,9 @@
 package genesis_generator
 
 import (
+	"fmt"
 	"testing"
+	"time"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
@@ -13,6 +15,7 @@ func TestGenerate(t *testing.T) {
 	a, err := proto.MustKeyPair([]byte("test")).Addr(proto.MainNetScheme)
 	require.NoError(t, err)
 	block, err := GenerateGenesisBlock(proto.MainNetScheme, []GenesisTransactionInfo{{Address: a, Amount: 9000000000000000, Timestamp: 1558516864282}}, 153722867, 1558516864282)
+	fmt.Println(block)
 	require.NoError(t, err)
 	require.Equal(t, 1, block.TransactionCount)
 	ok, err := block.VerifySignature(proto.MainNetScheme)
@@ -21,56 +24,51 @@ func TestGenerate(t *testing.T) {
 }
 
 func TestGenerateMainNet(t *testing.T) {
+	timestamp := uint64(time.Now().UnixNano())
 	txs := []GenesisTransactionInfo{
-		{Address: proto.MustAddressFromString("3PAWwWa6GbwcJaFzwqXQN5KQm7H96Y7SHTQ"), Amount: 9999999500000000, Timestamp: 1465742577614},
-		{Address: proto.MustAddressFromString("3P8JdJGYc7vaLu4UXUZc1iRLdzrkGtdCyJM"), Amount: 100000000, Timestamp: 1465742577614},
-		{Address: proto.MustAddressFromString("3PAGPDPqnGkyhcihyjMHe9v36Y4hkAh9yDy"), Amount: 100000000, Timestamp: 1465742577614},
-		{Address: proto.MustAddressFromString("3P9o3ZYwtHkaU1KxsKkFjJqJKS3dLHLC9oF"), Amount: 100000000, Timestamp: 1465742577614},
-		{Address: proto.MustAddressFromString("3PJaDyprvekvPXPuAtxrapacuDJopgJRaU3"), Amount: 100000000, Timestamp: 1465742577614},
-		{Address: proto.MustAddressFromString("3PBWXDFUc86N2EQxKJmW8eFco65xTyMZx6J"), Amount: 100000000, Timestamp: 1465742577614},
+		{Address: proto.MustAddressFromString("2yHPenxgb4PBWajHkkf8meLNL514NDrHqqrB"), Amount: 8750000000000000, Timestamp: timestamp},
+		{Address: proto.MustAddressFromString("2yHihYAyGPNmRZY2uRDvgfEMVo2ZLaykjMYG"), Amount: 7500000000000000, Timestamp: timestamp},
+		{Address: proto.MustAddressFromString("2yHgtQ5v1erNhcjm6NyX3vNYRaSjoZWjTU8q"), Amount: 3750000000000000, Timestamp: timestamp},
+		{Address: proto.MustAddressFromString("2yHQ8XBqs5gV6B9g7FQZV5mbZpGN8eZpX8Ry"), Amount: 5000000000000000, Timestamp: timestamp},
 	}
-	sig := crypto.MustSignatureFromBase58("FSH8eAAzZNqnG8xgTZtz5xuLqXySsXgAjmFEC25hXMbEufiGjqWPnGCZFt6gLiVLJny16ipxRNAkkzjjhqTjBE2")
-	block, err := RecreateGenesisBlock(proto.MainNetScheme, txs, 153722867, 1460678400000, sig)
+	blocks, err := GenerateGenesisBlock(proto.MainNetScheme, txs, 153722867, timestamp)
+	require.NoError(t, err)
+	fmt.Println("Genesis Block Info:", blocks)
+	sig := crypto.MustSignatureFromBase58(blocks.ID.String())
+	block, err := RecreateGenesisBlock(proto.MainNetScheme, txs, 153722867, timestamp, sig)
 	require.NoError(t, err)
 	bb, err := block.MarshalBinary(proto.MainNetScheme)
 	require.NoError(t, err)
-	assert.Equal(t, 500, len(bb))
-	assert.Equal(t, 6, block.TransactionCount)
-	assert.Equal(t, 283, int(block.TransactionBlockLength))
+	assert.Equal(t, 406, len(bb))
+	assert.Equal(t, 4, block.TransactionCount)
+	assert.Equal(t, 189, int(block.TransactionBlockLength))
 	assert.Equal(t, sig.Bytes(), block.BlockSignature.Bytes())
 	ok, err := block.VerifySignature(proto.MainNetScheme)
 	require.NoError(t, err)
 	assert.True(t, ok)
-
+	txid11, err := blocks.Transactions[3].GetID(proto.MainNetScheme)
+	ss, err := crypto.NewSignatureFromBytes(txid11)
+	fmt.Println("Signature:", ss)
 	txID1, err := block.Transactions[0].GetID(proto.MainNetScheme)
 	require.NoError(t, err)
 	assert.Equal(t,
-		crypto.MustSignatureFromBase58("2DVtfgXjpMeFf2PQCqvwxAiaGbiDsxDjSdNQkc5JQ74eWxjWFYgwvqzC4dn7iB1AhuM32WxEiVi1SGijsBtYQwn8").Bytes(), txID1)
+		crypto.MustSignatureFromBase58("5kKxScNbxMwqBf5x1HhG8RNMLJv5Wa439LNk1e6799fVrxfXa6CANdqRBwu5pa281fNj34KD1Yp1QGqhc5HELJbh").Bytes(), txID1)
 
 	txID2, err := block.Transactions[1].GetID(proto.MainNetScheme)
 	require.NoError(t, err)
 	assert.Equal(t,
-		crypto.MustSignatureFromBase58("2TsxPS216SsZJAiep7HrjZ3stHERVkeZWjMPFcvMotrdGpFa6UCCmoFiBGNizx83Ks8DnP3qdwtJ8WFcN9J4exa3").Bytes(), txID2)
+		crypto.MustSignatureFromBase58("4aNFL6N3XBQNCBoEj8nSWn3Tu82AfKCZJSxRY5KMbcYLc2MpJPpwoJHefE6P51oVbiXRaHEtnpC536QQfAoR41fX").Bytes(), txID2)
 
 	txID3, err := block.Transactions[2].GetID(proto.MainNetScheme)
 	require.NoError(t, err)
 	assert.Equal(t,
-		crypto.MustSignatureFromBase58("3gF8LFjhnZdgEVjP7P6o1rvwapqdgxn7GCykCo8boEQRwxCufhrgqXwdYKEg29jyPWthLF5cFyYcKbAeFvhtRNTc").Bytes(), txID3)
+		crypto.MustSignatureFromBase58("2pWaeZVSZ3vMbZwZSiJQkChSQXzpfy7S4VPGfpDYLdkYLxtrJxpHsd7UX5qb7NJYpNrw4LE8DQgfURn6Lk4j7DhF").Bytes(), txID3)
 
 	txID4, err := block.Transactions[3].GetID(proto.MainNetScheme)
 	require.NoError(t, err)
 	assert.Equal(t,
-		crypto.MustSignatureFromBase58("5hjSPLDyqic7otvtTJgVv73H3o6GxgTBqFMTY2PqAFzw2GHAnoQddC4EgWWFrAiYrtPadMBUkoepnwFHV1yR6u6g").Bytes(), txID4)
+		crypto.MustSignatureFromBase58("5d3ftTpNMqdUQSEYXh1FVtqeWEeBqYuCD1JwBqYivDT4mhPqZxTRxg9NxBdNooCVzup31hNGgwLUU6EVZ1oJdxtn").Bytes(), txID4)
 
-	txID5, err := block.Transactions[4].GetID(proto.MainNetScheme)
-	require.NoError(t, err)
-	assert.Equal(t,
-		crypto.MustSignatureFromBase58("ivP1MzTd28yuhJPkJsiurn2rH2hovXqxr7ybHZWoRGUYKazkfaL9MYoTUym4sFgwW7WB5V252QfeFTsM6Uiz3DM").Bytes(), txID5)
-
-	txID6, err := block.Transactions[5].GetID(proto.MainNetScheme)
-	require.NoError(t, err)
-	assert.Equal(t,
-		crypto.MustSignatureFromBase58("29gnRjk8urzqc9kvqaxAfr6niQTuTZnq7LXDAbd77nydHkvrTA4oepoMLsiPkJ8wj2SeFB5KXASSPmbScvBbfLiV").Bytes(), txID6)
 }
 
 func TestGenerateDevNet(t *testing.T) {

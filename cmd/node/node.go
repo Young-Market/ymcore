@@ -57,9 +57,9 @@ const (
 )
 
 var defaultPeers = map[string]string{
-	"mainnet":  "34.253.153.4:6868,168.119.116.189:6868,135.181.87.72:6868,162.55.39.115:6868,168.119.155.201:6868",
-	"testnet":  "159.69.126.149:6868,94.130.105.239:6868,159.69.126.153:6868,94.130.172.201:6868,35.157.247.122:6868",
-	"stagenet": "88.99.185.128:6868,49.12.15.166:6868,95.216.205.3:6868,88.198.179.16:6868,52.58.254.101:6868",
+	"mainnet":  "",
+	"testnet":  "",
+	"stagenet": "",
 }
 
 type config struct {
@@ -169,7 +169,7 @@ func (c *config) parse() {
 	flag.StringVar(&c.peerAddresses, "peers", "",
 		"Forces the node to connect to the provided peers. Format: \"ip:port,...,ip:port\".")
 	flag.StringVar(&c.declAddr, "declared-address", "", "Address to listen on.")
-	flag.StringVar(&c.nodeName, "name", "gowaves", "Node name.")
+	flag.StringVar(&c.nodeName, "name", "ymcore", "Node name.")
 	flag.StringVar(&c.cfgPath, "cfg-path", "",
 		"Path to configuration JSON file, only for custom blockchain.")
 	flag.StringVar(&c.apiAddr, "api-address", "", "Address for REST API.")

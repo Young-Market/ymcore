@@ -13,8 +13,8 @@ func TestNodeInfo_Version(t *testing.T) {
 		version    string
 		statusCode int
 	}{
-		{"Gowaves v0.10.0-14-g56259d4b", 200},
-		{"Waves v1.4.8-6-ga6adcae", 200},
+		{"Ymcore v0.10.0-14-g56259d4b", 200},
+		{"YM v1.4.8-6-ga6adcae", 200},
 		{"", 404},
 		{"", 500},
 	}

@@ -20,14 +20,15 @@ func TestAddressFromPublicKey(t *testing.T) {
 		scheme    byte
 		address   string
 	}{
-		{"5CnGfSjguYfzWzaRmbxzCbF5qRNGTXEvayytSANkqQ6A", MainNetScheme, "3PQ8bp1aoqHQo3icNqFv6VM36V1jzPeaG1v"},
-		{"BstqhtQjQN9X78i6mEpaNnf6cMsZZRDVHNv3CqguXbxq", MainNetScheme, "3PQvBCHPnxXprTNq1rwdcDuxt6VGKRTM9wT"},
-		{"FckK43s6tQ9BBW77hSKuyRnfnrKuf6B7sEuJzcgkSDVf", MainNetScheme, "3PETfqHg9HyL92nfiujN5fBW6Ac1TYiVAAc"},
-		{"5CnGfSjguYfzWzaRmbxzCbF5qRNGTXEvayytSANkqQ6A", TestNetScheme, "3NC7nrggwhk2AbRC7kzv92yDjbVyALeGzE5"},
-		{"BstqhtQjQN9X78i6mEpaNnf6cMsZZRDVHNv3CqguXbxq", TestNetScheme, "3NCuNExVvpzSE15QkngdemY9XCyVVGhHA9h"},
-		{"5CnGfSjguYfzWzaRmbxzCbF5qRNGTXEvayytSANkqQ6A", 'x', "3cgHWJbRKGEhi32DEe6ucVV24FfF7u2mxit"},
-		{"BstqhtQjQN9X78i6mEpaNnf6cMsZZRDVHNv3CqguXbxq", 'x', "3ch55gsEJPV7mSgRsfnd8E3wqs8mSqyTNCj"},
+		{"G6qx8k7njGaJsE4JdsmmxipKFwkiLgrP23s2CVC5Vnc9", MainNetScheme, "2yHQ8XBqs5gV6B9g7FQZV5mbZpGN8eZpX8Ry"},
+		{"BstqhtQjQN9X78i6mEpaNnf6cMsZZRDVHNv3CqguXbxq", MainNetScheme, "2yHndXHoGuNSBTrjkLe4EKzLJa793cioRaXB"},
+		{"FckK43s6tQ9BBW77hSKuyRnfnrKuf6B7sEuJzcgkSDVf", MainNetScheme, "2yHcB1voZFhsgkS9b3gqxoRbqnBFnkrfseef"},
+		{"5CnGfSjguYfzWzaRmbxzCbF5qRNGTXEvayytSANkqQ6A", TestNetScheme, "2yFm9vyyyUhHT2MuqGVGrDq91rM9EaEHJ7Y3"},
+		{"BstqhtQjQN9X78i6mEpaNnf6cMsZZRDVHNv3CqguXbxq", TestNetScheme, "2yFmwWNFnTpXs5ma3uWxZjZhwdxckuAyEtRs"},
+		{"5CnGfSjguYfzWzaRmbxzCbF5qRNGTXEvayytSANkqQ6A", 'x', "2yWFKeRthrFn8ZoWrPNNqhHepB1JWXpoeqRx"},
+		{"BstqhtQjQN9X78i6mEpaNnf6cMsZZRDVHNv3CqguXbxq", 'x', "2yWG7DpAWqP2YdDB52Q4ZD2Djxcn2rmJR9hn"},
 	}
+
 	for _, tc := range tests {
 		if b, err := base58.Decode(tc.publicKey); assert.NoError(t, err) {
 			var pk crypto.PublicKey

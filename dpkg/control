@@ -1,7 +1,7 @@
 Package: PACKAGE
 Version: DEB_VER
 Architecture: ARCH
-Maintainer: waves.tech
+Maintainer: youngmarket.net
 Section: utils
 Priority: standard
 Description: DESCRIPTION VERSION

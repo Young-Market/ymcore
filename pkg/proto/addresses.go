@@ -39,7 +39,7 @@ const (
 
 	EthereumAddressSize = AddressIDSize
 
-	MainNetScheme   byte = 'W'
+	MainNetScheme   byte = 'Y'
 	TestNetScheme   byte = 'T'
 	StageNetScheme  byte = 'S'
 	CustomNetScheme byte = 'E'

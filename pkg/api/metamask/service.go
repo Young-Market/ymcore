@@ -68,12 +68,12 @@ func (s RPCService) Eth_GetBalance(ethAddr proto.EthereumAddress, blockOrTag str
 	wavesAddr, err := ethAddr.ToWavesAddress(s.nodeRPCApp.Scheme)
 	if err != nil {
 		// todo log err
-		return "", errors.Wrapf(err, "failed to convert ethereum address %q to waves address", ethAddr)
+		return "", errors.Wrapf(err, "failed to convert ethereum address %q to YM address", ethAddr)
 	}
 	amount, err := s.nodeRPCApp.State.WavesBalance(proto.NewRecipientFromAddress(wavesAddr))
 	if err != nil {
 		// todo log err
-		return "", errors.Wrapf(err, "failed to get waves balance for address %q", wavesAddr)
+		return "", errors.Wrapf(err, "failed to get YM balance for address %q", wavesAddr)
 	}
 	return bigIntToHexString(proto.WaveletToEthereumWei(amount)), nil
 }
@@ -304,7 +304,7 @@ func (s RPCService) Eth_GetCode(ethAddr proto.EthereumAddress, blockOrTag string
 
 	wavesAddr, err := ethAddr.ToWavesAddress(s.nodeRPCApp.Scheme)
 	if err != nil {
-		return "", errors.Wrapf(err, "failed to convert ethereum address %q to waves address", ethAddr)
+		return "", errors.Wrapf(err, "failed to convert ethereum address %q to YM address", ethAddr)
 	}
 
 	si, err := s.nodeRPCApp.State.ScriptBasicInfoByAccount(proto.NewRecipientFromAddress(wavesAddr))

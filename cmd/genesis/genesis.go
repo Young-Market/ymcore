@@ -40,10 +40,10 @@ func run() error {
 		config     bool
 		shift      time.Duration
 	)
-	flag.StringVar(&scheme, "scheme", "C", "Network scheme byte, defaults to 'C'")
+	flag.StringVar(&scheme, "scheme", "Y", "Network scheme byte, defaults to 'Y'")
 	flag.StringVar(&seed, "seed", "", "Master seed as Base58 string")
 	flag.StringVar(&amounts, "amounts", "", "Comma separated transaction amounts")
-	flag.StringVar(&pairs, "pairs", "", "Comma separated pairs of address or account seed and amount to produce genesis transactions, eg '3MvRmBpZf6Cm14dY5Nrrq2pj4587EzGTnj4:100_000_000,8GVECo9addsbFumLsmnAU3Cfz7UiF5TGm64zkZnfntdA:100_000'")
+	flag.StringVar(&pairs, "pairs", "", "Comma separated pairs of address or account seed and amount to produce genesis transactions, eg '2yHQ8XBqs5gV6B9g7FQZV5mbZpGN8eZpX8Ry:100_000_000'")
 	flag.Uint64Var(&baseTarget, "base-target", 0, "Base Target value")
 	flag.Int64Var(&timestamp, "timestamp", time.Now().UnixMilli(), "Block and transactions timestamp in ms, defaults to current time")
 	flag.StringVar(&signature, "signature", "", "Genesis block signature as Base58 string")
@@ -63,7 +63,7 @@ func run() error {
 	}
 	sc = scheme[0]
 	if timestamp <= 0 {
-		return errors.Errorf("ivalid timestamp '%d'", timestamp)
+		return errors.Errorf("invalid timestamp '%d'", timestamp)
 	}
 	ts = uint64(timestamp)
 	if shift != 0 {
@@ -87,10 +87,12 @@ func run() error {
 		}
 		transactions = txs
 	default:
+		fmt.Println(seed, pairs)
 		return errors.New("invalid combination of 'pairs' or 'seed' and 'amounts' parameters")
 	}
 	if baseTarget == 0 {
-		return errors.New("no Base Target value")
+		fmt.Println("Base target:", baseTarget)
+		return errors.New("no Base Target value:")
 	}
 	bt = baseTarget
 

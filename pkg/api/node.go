@@ -11,7 +11,7 @@ type nodeVersion struct {
 }
 
 func (a *App) version() nodeVersion {
-	return nodeVersion{Version: fmt.Sprintf("Gowaves %s", versioning.Version)}
+	return nodeVersion{Version: fmt.Sprintf("Ymcore %s", versioning.Version)}
 }
 
 func (a *App) NodeProcesses() map[string]int {

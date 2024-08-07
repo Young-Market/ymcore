@@ -54,7 +54,7 @@ func run() error {
 			"Matcher's public keys in form of Base58 string, comma separated.")
 		oracle = flag.String("oracle", "3P661nhk56WzFHCmQNKXjZGADxLHNY3LxP3",
 			"Address of the tickers oracle, default for MainNet")
-		scheme      = flag.String("scheme", "W", "Blockchain scheme symbol. Defaults to 'W'.")
+		scheme      = flag.String("scheme", "Y", "Blockchain scheme symbol. Defaults to 'Y'.")
 		symbolsFile = flag.String("symbols", "", "Path to file of symbol substitutions. No default value.")
 		rollback    = flag.Int("rollback", 0,
 			"The height to rollback to before importing a blockchain file or staring the synchronization. "+
@@ -78,7 +78,7 @@ func run() error {
 	interrupt := interruptListener()
 	defer zap.S().Info("Shutdown complete")
 
-	zap.S().Infof("Waves Market Data (WMD) version %s", version)
+	zap.S().Infof("YM Market Data (YMMD) version %s", version)
 
 	// Enable http profiling server if requested
 	if *profilerPort != 0 {
