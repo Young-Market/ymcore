@@ -105,21 +105,21 @@ dist-blockcmp: release-blockcmp
 	@cd ./build/bin/darwin-amd64/; tar pzcvf ../../dist/blockcmp_$(VERSION)_macOS-amd64.tar.gz ./blockcmp*
 
 build-node-native:
-	@go build -o build/bin/native/node -ldflags="-X 'github.com/wavesplatform/gowaves/pkg/versioning.Version=$(VERSION)'" ./cmd/node
+	@go build -o build/bin/native/node -ldflags="-X 'github.com/young-market/ymcore/pkg/versioning.Version=$(VERSION)'" ./cmd/node
 build-node-linux-amd64:
-	@CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o build/bin/linux-amd64/node -ldflags="-X 'github.com/wavesplatform/gowaves/pkg/versioning.Version=$(VERSION)'" ./cmd/node
+	@CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o build/bin/linux-amd64/node -ldflags="-X 'github.com/young-market/ymcore/pkg/versioning.Version=$(VERSION)'" ./cmd/node
 build-node-linux-amd64-with-race:
-	@CGO_ENABLED=1 GOOS=linux GOARCH=amd64 go build -race -o build/bin/linux-amd64/node -ldflags="-X 'github.com/wavesplatform/gowaves/pkg/versioning.Version=$(VERSION)'" ./cmd/node
+	@CGO_ENABLED=1 GOOS=linux GOARCH=amd64 go build -race -o build/bin/linux-amd64/node -ldflags="-X 'github.com/young-market/ymcore/pkg/versioning.Version=$(VERSION)'" ./cmd/node
 build-node-linux-i386:
-	@CGO_ENABLED=0 GOOS=linux GOARCH=386 go build -o build/bin/linux-i386/node -ldflags="-X 'github.com/wavesplatform/gowaves/pkg/versioning.Version=$(VERSION)'" ./cmd/node
+	@CGO_ENABLED=0 GOOS=linux GOARCH=386 go build -o build/bin/linux-i386/node -ldflags="-X 'github.com/young-market/ymcore/pkg/versioning.Version=$(VERSION)'" ./cmd/node
 build-node-linux-arm:
-	@CGO_ENABLED=0 GOOS=linux GOARCH=arm go build -o build/bin/linux-arm/node -ldflags="-X 'github.com/wavesplatform/gowaves/pkg/versioning.Version=$(VERSION)'" ./cmd/node
+	@CGO_ENABLED=0 GOOS=linux GOARCH=arm go build -o build/bin/linux-arm/node -ldflags="-X 'github.com/young-market/ymcore/pkg/versioning.Version=$(VERSION)'" ./cmd/node
 build-node-linux-arm64:
-	@CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -o build/bin/linux-arm64/node -ldflags="-X 'github.com/wavesplatform/gowaves/pkg/versioning.Version=$(VERSION)'" ./cmd/node
+	@CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -o build/bin/linux-arm64/node -ldflags="-X 'github.com/young-market/ymcore/pkg/versioning.Version=$(VERSION)'" ./cmd/node
 build-node-darwin-amd64:
-	@CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -o build/bin/darwin-amd64/node -ldflags="-X 'github.com/wavesplatform/gowaves/pkg/versioning.Version=$(VERSION)'" ./cmd/node
+	@CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -o build/bin/darwin-amd64/node -ldflags="-X 'github.com/young-market/ymcore/pkg/versioning.Version=$(VERSION)'" ./cmd/node
 build-node-windows-amd64:
-	@CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o build/bin/windows-amd64/node.exe -ldflags="-X 'github.com/wavesplatform/gowaves/pkg/versioning.Version=$(VERSION)'" ./cmd/node
+	@CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o build/bin/windows-amd64/node.exe -ldflags="-X 'github.com/young-market/ymcore/pkg/versioning.Version=$(VERSION)'" ./cmd/node
 
 release-node: ver build-node-linux-amd64 build-node-linux-i386 build-node-linux-arm64 build-node-linux-arm build-node-darwin-amd64 build-node-windows-amd64
 
@@ -131,13 +131,13 @@ dist-node: release-node build-node-mainnet-amd64-deb-package build-node-testnet-
 	@cd ./build/bin/darwin-amd64/; tar pzcvf ../../dist/node_$(VERSION)_macOS-amd64.tar.gz ./node*
 
 build-importer-native:
-	@go build -pgo=importer.pgo -o build/bin/native/importer -ldflags="-X 'github.com/wavesplatform/gowaves/pkg/versioning.Version=$(VERSION)'" ./cmd/importer
+	@go build -pgo=importer.pgo -o build/bin/native/importer -ldflags="-X 'github.com/young-market/ymcore/pkg/versioning.Version=$(VERSION)'" ./cmd/importer
 build-importer-linux:
-	@CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -pgo=importer.pgo -o build/bin/linux-amd64/importer -ldflags="-X 'github.com/wavesplatform/gowaves/pkg/versioning.Version=$(VERSION)'" ./cmd/importer
+	@CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -pgo=importer.pgo -o build/bin/linux-amd64/importer -ldflags="-X 'github.com/young-market/ymcore/pkg/versioning.Version=$(VERSION)'" ./cmd/importer
 build-importer-darwin:
-	@CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -pgo=importer.pgo -o build/bin/darwin-amd64/importer -ldflags="-X 'github.com/wavesplatform/gowaves/pkg/versioning.Version=$(VERSION)'" ./cmd/importer
+	@CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -pgo=importer.pgo -o build/bin/darwin-amd64/importer -ldflags="-X 'github.com/young-market/ymcore/pkg/versioning.Version=$(VERSION)'" ./cmd/importer
 build-importer-windows:
-	@CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -pgo=importer.pgo -o build/bin/windows-amd64/importer.exe -ldflags="-X 'github.com/wavesplatform/gowaves/pkg/versioning.Version=$(VERSION)'" ./cmd/importer
+	@CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -pgo=importer.pgo -o build/bin/windows-amd64/importer.exe -ldflags="-X 'github.com/young-market/ymcore/pkg/versioning.Version=$(VERSION)'" ./cmd/importer
 
 release-importer: ver build-importer-linux build-importer-darwin build-importer-windows
 
@@ -163,11 +163,11 @@ dist-wallet: release-wallet
 	@cd ./build/bin/darwin-amd64/; tar pzcvf ../../dist/wallet_$(VERSION)_macOS-amd64.tar.gz ./wallet*
 
 build-rollback-linux:
-	@CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o build/bin/linux-amd64/rollback -ldflags="-X 'github.com/wavesplatform/gowaves/pkg/versioning.Version=$(VERSION)'" ./cmd/rollback
+	@CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o build/bin/linux-amd64/rollback -ldflags="-X 'github.com/young-market/ymcore/pkg/versioning.Version=$(VERSION)'" ./cmd/rollback
 build-rollback-darwin:
-	@CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -o build/bin/darwin-amd64/rollback -ldflags="-X 'github.com/wavesplatform/gowaves/pkg/versioning.Version=$(VERSION)'" ./cmd/rollback
+	@CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -o build/bin/darwin-amd64/rollback -ldflags="-X 'github.com/young-market/ymcore/pkg/versioning.Version=$(VERSION)'" ./cmd/rollback
 build-rollback-windows:
-	@CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o build/bin/windows-amd64/rollback.exe -ldflags="-X 'github.com/wavesplatform/gowaves/pkg/versioning.Version=$(VERSION)'" ./cmd/rollback
+	@CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o build/bin/windows-amd64/rollback.exe -ldflags="-X 'github.com/young-market/ymcore/pkg/versioning.Version=$(VERSION)'" ./cmd/rollback
 
 release-rollback: ver build-rollback-linux build-rollback-darwin build-rollback-windows
 
@@ -229,151 +229,151 @@ proto:
 
 build-node-mainnet-amd64-deb-package: release-node
 	@mkdir -p build/dist
-	@mkdir -p ./build/gowaves-mainnet-amd64/DEBIAN
-	@sed "s/DEB_VER/$(DEB_VER)/g; s/VERSION/$(VERSION)/g; s/DESCRIPTION/Gowaves Node for MainNet System Service/g; s/PACKAGE/gowaves-mainnet/g; s/ARCH/amd64/g" ./dpkg/control > ./build/gowaves-mainnet-amd64/DEBIAN/control
-	@sed "s/PACKAGE/gowaves-mainnet/g; s/NAME/gowaves/g;" ./dpkg/postinst > ./build/gowaves-mainnet-amd64/DEBIAN/postinst
-	@sed "s/PACKAGE/gowaves-mainnet/g" ./dpkg/postrm > ./build/gowaves-mainnet-amd64/DEBIAN/postrm
-	@sed "s/PACKAGE/gowaves-mainnet/g" ./dpkg/prerm > ./build/gowaves-mainnet-amd64/DEBIAN/prerm
-	@chmod 0644 ./build/gowaves-mainnet-amd64/DEBIAN/control
-	@chmod 0775 ./build/gowaves-mainnet-amd64/DEBIAN/postinst
-	@chmod 0775 ./build/gowaves-mainnet-amd64/DEBIAN/postrm
-	@chmod 0775 ./build/gowaves-mainnet-amd64/DEBIAN/prerm
+	@mkdir -p ./build/ymcore-mainnet-amd64/DEBIAN
+	@sed "s/DEB_VER/$(DEB_VER)/g; s/VERSION/$(VERSION)/g; s/DESCRIPTION/ymcore Node for MainNet System Service/g; s/PACKAGE/ymcore-mainnet/g; s/ARCH/amd64/g" ./dpkg/control > ./build/ymcore-mainnet-amd64/DEBIAN/control
+	@sed "s/PACKAGE/ymcore-mainnet/g; s/NAME/ymcore/g;" ./dpkg/postinst > ./build/ymcore-mainnet-amd64/DEBIAN/postinst
+	@sed "s/PACKAGE/ymcore-mainnet/g" ./dpkg/postrm > ./build/ymcore-mainnet-amd64/DEBIAN/postrm
+	@sed "s/PACKAGE/ymcore-mainnet/g" ./dpkg/prerm > ./build/ymcore-mainnet-amd64/DEBIAN/prerm
+	@chmod 0644 ./build/ymcore-mainnet-amd64/DEBIAN/control
+	@chmod 0775 ./build/ymcore-mainnet-amd64/DEBIAN/postinst
+	@chmod 0775 ./build/ymcore-mainnet-amd64/DEBIAN/postrm
+	@chmod 0775 ./build/ymcore-mainnet-amd64/DEBIAN/prerm
 
-	@mkdir -p ./build/gowaves-mainnet-amd64/lib/systemd/system
-	@sed "s|VERSION|$(VERSION)|g; s|DESCRIPTION|Gowaves Node for MainNet System Service|g; s|PACKAGE|gowaves-mainnet|g; s|EXECUTABLE|node|g; s|PARAMS|-state-path /var/lib/gowaves-mainnet/ -api-address 0.0.0.0:8080|g; s|NAME|gowaves|g" ./dpkg/service.service > ./build/gowaves-mainnet-amd64/lib/systemd/system/gowaves-mainnet.service
+	@mkdir -p ./build/ymcore-mainnet-amd64/lib/systemd/system
+	@sed "s|VERSION|$(VERSION)|g; s|DESCRIPTION|ymcore Node for MainNet System Service|g; s|PACKAGE|ymcore-mainnet|g; s|EXECUTABLE|node|g; s|PARAMS|-state-path /var/lib/ymcore-mainnet/ -api-address 0.0.0.0:8080|g; s|NAME|ymcore|g" ./dpkg/service.service > ./build/ymcore-mainnet-amd64/lib/systemd/system/ymcore-mainnet.service
 
-	@mkdir -p ./build/gowaves-mainnet-amd64/usr/share/gowaves-mainnet
-	@cp ./build/bin/linux-amd64/node ./build/gowaves-mainnet-amd64/usr/share/gowaves-mainnet
+	@mkdir -p ./build/ymcore-mainnet-amd64/usr/share/ymcore-mainnet
+	@cp ./build/bin/linux-amd64/node ./build/ymcore-mainnet-amd64/usr/share/ymcore-mainnet
 
-	@mkdir -p ./build/gowaves-mainnet-amd64/var/lib/gowaves-mainnet/
-	@mkdir -p ./build/gowaves-mainnet-amd64/var/log/gowaves-mainnet/
+	@mkdir -p ./build/ymcore-mainnet-amd64/var/lib/ymcore-mainnet/
+	@mkdir -p ./build/ymcore-mainnet-amd64/var/log/ymcore-mainnet/
 
-	@dpkg-deb --build ./build/gowaves-mainnet-amd64
-	@mv ./build/gowaves-mainnet-amd64.deb ./build/dist/gowaves-mainnet-amd64_${VERSION}.deb
-	@rm -rf ./build/gowaves-mainnet-amd64
+	@dpkg-deb --build ./build/ymcore-mainnet-amd64
+	@mv ./build/ymcore-mainnet-amd64.deb ./build/dist/ymcore-mainnet-amd64_${VERSION}.deb
+	@rm -rf ./build/ymcore-mainnet-amd64
 
 build-node-mainnet-arm64-deb-package: release-node
 	@mkdir -p build/dist
-	@mkdir -p ./build/gowaves-mainnet-arm64/DEBIAN
-	@sed "s/DEB_VER/$(DEB_VER)/g; s/VERSION/$(VERSION)/g; s/DESCRIPTION/Gowaves Node for MainNet System Service/g; s/PACKAGE/gowaves-mainnet/g; s/ARCH/arm64/g" ./dpkg/control > ./build/gowaves-mainnet-arm64/DEBIAN/control
-	@sed "s/PACKAGE/gowaves-mainnet/g; s/NAME/gowaves/g;" ./dpkg/postinst > ./build/gowaves-mainnet-arm64/DEBIAN/postinst
-	@sed "s/PACKAGE/gowaves-mainnet/g" ./dpkg/postrm > ./build/gowaves-mainnet-arm64/DEBIAN/postrm
-	@sed "s/PACKAGE/gowaves-mainnet/g" ./dpkg/prerm > ./build/gowaves-mainnet-arm64/DEBIAN/prerm
-	@chmod 0644 ./build/gowaves-mainnet-arm64/DEBIAN/control
-	@chmod 0775 ./build/gowaves-mainnet-arm64/DEBIAN/postinst
-	@chmod 0775 ./build/gowaves-mainnet-arm64/DEBIAN/postrm
-	@chmod 0775 ./build/gowaves-mainnet-arm64/DEBIAN/prerm
+	@mkdir -p ./build/ymcore-mainnet-arm64/DEBIAN
+	@sed "s/DEB_VER/$(DEB_VER)/g; s/VERSION/$(VERSION)/g; s/DESCRIPTION/ymcore Node for MainNet System Service/g; s/PACKAGE/ymcore-mainnet/g; s/ARCH/arm64/g" ./dpkg/control > ./build/ymcore-mainnet-arm64/DEBIAN/control
+	@sed "s/PACKAGE/ymcore-mainnet/g; s/NAME/ymcore/g;" ./dpkg/postinst > ./build/ymcore-mainnet-arm64/DEBIAN/postinst
+	@sed "s/PACKAGE/ymcore-mainnet/g" ./dpkg/postrm > ./build/ymcore-mainnet-arm64/DEBIAN/postrm
+	@sed "s/PACKAGE/ymcore-mainnet/g" ./dpkg/prerm > ./build/ymcore-mainnet-arm64/DEBIAN/prerm
+	@chmod 0644 ./build/ymcore-mainnet-arm64/DEBIAN/control
+	@chmod 0775 ./build/ymcore-mainnet-arm64/DEBIAN/postinst
+	@chmod 0775 ./build/ymcore-mainnet-arm64/DEBIAN/postrm
+	@chmod 0775 ./build/ymcore-mainnet-arm64/DEBIAN/prerm
 
-	@mkdir -p ./build/gowaves-mainnet-arm64/lib/systemd/system
-	@sed "s|VERSION|$(VERSION)|g; s|DESCRIPTION|Gowaves Node for MainNet System Service|g; s|PACKAGE|gowaves-mainnet|g; s|EXECUTABLE|node|g; s|PARAMS|-state-path /var/lib/gowaves-mainnet/ -api-address 0.0.0.0:8080|g; s|NAME|gowaves|g" ./dpkg/service.service > ./build/gowaves-mainnet-arm64/lib/systemd/system/gowaves-mainnet.service
+	@mkdir -p ./build/ymcore-mainnet-arm64/lib/systemd/system
+	@sed "s|VERSION|$(VERSION)|g; s|DESCRIPTION|ymcore Node for MainNet System Service|g; s|PACKAGE|ymcore-mainnet|g; s|EXECUTABLE|node|g; s|PARAMS|-state-path /var/lib/ymcore-mainnet/ -api-address 0.0.0.0:8080|g; s|NAME|ymcore|g" ./dpkg/service.service > ./build/ymcore-mainnet-arm64/lib/systemd/system/ymcore-mainnet.service
 
-	@mkdir -p ./build/gowaves-mainnet-arm64/usr/share/gowaves-mainnet
-	@cp ./build/bin/linux-arm64/node ./build/gowaves-mainnet-arm64/usr/share/gowaves-mainnet
+	@mkdir -p ./build/ymcore-mainnet-arm64/usr/share/ymcore-mainnet
+	@cp ./build/bin/linux-arm64/node ./build/ymcore-mainnet-arm64/usr/share/ymcore-mainnet
 
-	@mkdir -p ./build/gowaves-mainnet-arm64/var/lib/gowaves-mainnet/
-	@mkdir -p ./build/gowaves-mainnet-arm64/var/log/gowaves-mainnet/
+	@mkdir -p ./build/ymcore-mainnet-arm64/var/lib/ymcore-mainnet/
+	@mkdir -p ./build/ymcore-mainnet-arm64/var/log/ymcore-mainnet/
 
-	@dpkg-deb --build ./build/gowaves-mainnet-arm64
-	@mv ./build/gowaves-mainnet-arm64.deb ./build/dist/gowaves-mainnet-arm64_${VERSION}.deb
-	@rm -rf ./build/gowaves-mainnet-arm64
+	@dpkg-deb --build ./build/ymcore-mainnet-arm64
+	@mv ./build/ymcore-mainnet-arm64.deb ./build/dist/ymcore-mainnet-arm64_${VERSION}.deb
+	@rm -rf ./build/ymcore-mainnet-arm64
 
 build-node-testnet-amd64-deb-package: release-node
 	@mkdir -p build/dist
 
-	@mkdir -p ./build/gowaves-testnet-amd64/DEBIAN
-	@sed "s/DEB_VER/$(DEB_VER)/g; s/VERSION/$(VERSION)/g; s/DESCRIPTION/Gowaves Node for TestNet System Service/g; s/PACKAGE/gowaves-testnet/g; s/ARCH/amd64/g" ./dpkg/control > ./build/gowaves-testnet-amd64/DEBIAN/control
-	@sed "s/PACKAGE/gowaves-testnet/g; s/NAME/gowaves/g;" ./dpkg/postinst > ./build/gowaves-testnet-amd64/DEBIAN/postinst
-	@sed "s/PACKAGE/gowaves-testnet/g" ./dpkg/postrm > ./build/gowaves-testnet-amd64/DEBIAN/postrm
-	@sed "s/PACKAGE/gowaves-testnet/g" ./dpkg/prerm > ./build/gowaves-testnet-amd64/DEBIAN/prerm
-	@chmod 0644 ./build/gowaves-testnet-amd64/DEBIAN/control
-	@chmod 0775 ./build/gowaves-testnet-amd64/DEBIAN/postinst
-	@chmod 0775 ./build/gowaves-testnet-amd64/DEBIAN/postrm
-	@chmod 0775 ./build/gowaves-testnet-amd64/DEBIAN/prerm
+	@mkdir -p ./build/ymcore-testnet-amd64/DEBIAN
+	@sed "s/DEB_VER/$(DEB_VER)/g; s/VERSION/$(VERSION)/g; s/DESCRIPTION/ymcore Node for TestNet System Service/g; s/PACKAGE/ymcore-testnet/g; s/ARCH/amd64/g" ./dpkg/control > ./build/ymcore-testnet-amd64/DEBIAN/control
+	@sed "s/PACKAGE/ymcore-testnet/g; s/NAME/ymcore/g;" ./dpkg/postinst > ./build/ymcore-testnet-amd64/DEBIAN/postinst
+	@sed "s/PACKAGE/ymcore-testnet/g" ./dpkg/postrm > ./build/ymcore-testnet-amd64/DEBIAN/postrm
+	@sed "s/PACKAGE/ymcore-testnet/g" ./dpkg/prerm > ./build/ymcore-testnet-amd64/DEBIAN/prerm
+	@chmod 0644 ./build/ymcore-testnet-amd64/DEBIAN/control
+	@chmod 0775 ./build/ymcore-testnet-amd64/DEBIAN/postinst
+	@chmod 0775 ./build/ymcore-testnet-amd64/DEBIAN/postrm
+	@chmod 0775 ./build/ymcore-testnet-amd64/DEBIAN/prerm
 
-	@mkdir -p ./build/gowaves-testnet-amd64/lib/systemd/system
-	@sed "s|VERSION|$(VERSION)|g; s|DESCRIPTION|Gowaves Node for TestNet System Service|g; s|PACKAGE|gowaves-testnet|g; s|EXECUTABLE|node|g; s|PARAMS|-state-path /var/lib/gowaves-testnet/ -api-address 0.0.0.0:8090 -blockchain-type testnet|g; s|NAME|gowaves|g" ./dpkg/service.service > ./build/gowaves-testnet-amd64/lib/systemd/system/gowaves-testnet.service
+	@mkdir -p ./build/ymcore-testnet-amd64/lib/systemd/system
+	@sed "s|VERSION|$(VERSION)|g; s|DESCRIPTION|ymcore Node for TestNet System Service|g; s|PACKAGE|ymcore-testnet|g; s|EXECUTABLE|node|g; s|PARAMS|-state-path /var/lib/ymcore-testnet/ -api-address 0.0.0.0:8090 -blockchain-type testnet|g; s|NAME|ymcore|g" ./dpkg/service.service > ./build/ymcore-testnet-amd64/lib/systemd/system/ymcore-testnet.service
 
-	@mkdir -p ./build/gowaves-testnet-amd64/usr/share/gowaves-testnet
-	@cp ./build/bin/linux-amd64/node ./build/gowaves-testnet-amd64/usr/share/gowaves-testnet
+	@mkdir -p ./build/ymcore-testnet-amd64/usr/share/ymcore-testnet
+	@cp ./build/bin/linux-amd64/node ./build/ymcore-testnet-amd64/usr/share/ymcore-testnet
 
-	@mkdir -p ./build/gowaves-testnet-amd64/var/lib/gowaves-testnet/
-	@mkdir -p ./build/gowaves-testnet-amd64/var/log/gowaves-testnet/
+	@mkdir -p ./build/ymcore-testnet-amd64/var/lib/ymcore-testnet/
+	@mkdir -p ./build/ymcore-testnet-amd64/var/log/ymcore-testnet/
 
-	@dpkg-deb --build ./build/gowaves-testnet-amd64
-	@mv ./build/gowaves-testnet-amd64.deb ./build/dist/gowaves-testnet-amd64_${VERSION}.deb
-	@rm -rf ./build/gowaves-testnet-amd64
+	@dpkg-deb --build ./build/ymcore-testnet-amd64
+	@mv ./build/ymcore-testnet-amd64.deb ./build/dist/ymcore-testnet-amd64_${VERSION}.deb
+	@rm -rf ./build/ymcore-testnet-amd64
 
 build-node-testnet-arm64-deb-package: release-node
 	@mkdir -p build/dist
-	@mkdir -p ./build/gowaves-testnet-arm64/DEBIAN
-	@sed "s/DEB_VER/$(DEB_VER)/g; s/VERSION/$(VERSION)/g; s/DESCRIPTION/Gowaves Node for TestNet System Service/g; s/PACKAGE/gowaves-testnet/g; s/ARCH/arm64/g" ./dpkg/control > ./build/gowaves-testnet-arm64/DEBIAN/control
-	@sed "s/PACKAGE/gowaves-testnet/g; s/NAME/gowaves/g;" ./dpkg/postinst > ./build/gowaves-testnet-arm64/DEBIAN/postinst
-	@sed "s/PACKAGE/gowaves-testnet/g" ./dpkg/postrm > ./build/gowaves-testnet-arm64/DEBIAN/postrm
-	@sed "s/PACKAGE/gowaves-testnet/g" ./dpkg/prerm > ./build/gowaves-testnet-arm64/DEBIAN/prerm
-	@chmod 0644 ./build/gowaves-testnet-arm64/DEBIAN/control
-	@chmod 0775 ./build/gowaves-testnet-arm64/DEBIAN/postinst
-	@chmod 0775 ./build/gowaves-testnet-arm64/DEBIAN/postrm
-	@chmod 0775 ./build/gowaves-testnet-arm64/DEBIAN/prerm
+	@mkdir -p ./build/ymcore-testnet-arm64/DEBIAN
+	@sed "s/DEB_VER/$(DEB_VER)/g; s/VERSION/$(VERSION)/g; s/DESCRIPTION/ymcore Node for TestNet System Service/g; s/PACKAGE/ymcore-testnet/g; s/ARCH/arm64/g" ./dpkg/control > ./build/ymcore-testnet-arm64/DEBIAN/control
+	@sed "s/PACKAGE/ymcore-testnet/g; s/NAME/ymcore/g;" ./dpkg/postinst > ./build/ymcore-testnet-arm64/DEBIAN/postinst
+	@sed "s/PACKAGE/ymcore-testnet/g" ./dpkg/postrm > ./build/ymcore-testnet-arm64/DEBIAN/postrm
+	@sed "s/PACKAGE/ymcore-testnet/g" ./dpkg/prerm > ./build/ymcore-testnet-arm64/DEBIAN/prerm
+	@chmod 0644 ./build/ymcore-testnet-arm64/DEBIAN/control
+	@chmod 0775 ./build/ymcore-testnet-arm64/DEBIAN/postinst
+	@chmod 0775 ./build/ymcore-testnet-arm64/DEBIAN/postrm
+	@chmod 0775 ./build/ymcore-testnet-arm64/DEBIAN/prerm
 
-	@mkdir -p ./build/gowaves-testnet-arm64/lib/systemd/system
-	@sed "s|VERSION|$(VERSION)|g; s|DESCRIPTION|Gowaves Node for TestNet System Service|g; s|PACKAGE|gowaves-testnet|g; s|EXECUTABLE|node|g; s|PARAMS|-state-path /var/lib/gowaves-testnet/ -api-address 0.0.0.0:8090 -blockchain-type testnet|g; s|NAME|gowaves|g" ./dpkg/service.service > ./build/gowaves-testnet-arm64/lib/systemd/system/gowaves-testnet.service
+	@mkdir -p ./build/ymcore-testnet-arm64/lib/systemd/system
+	@sed "s|VERSION|$(VERSION)|g; s|DESCRIPTION|ymcore Node for TestNet System Service|g; s|PACKAGE|ymcore-testnet|g; s|EXECUTABLE|node|g; s|PARAMS|-state-path /var/lib/ymcore-testnet/ -api-address 0.0.0.0:8090 -blockchain-type testnet|g; s|NAME|ymcore|g" ./dpkg/service.service > ./build/ymcore-testnet-arm64/lib/systemd/system/ymcore-testnet.service
 
-	@mkdir -p ./build/gowaves-testnet-arm64/usr/share/gowaves-testnet
-	@cp ./build/bin/linux-arm64/node ./build/gowaves-testnet-arm64/usr/share/gowaves-testnet
+	@mkdir -p ./build/ymcore-testnet-arm64/usr/share/ymcore-testnet
+	@cp ./build/bin/linux-arm64/node ./build/ymcore-testnet-arm64/usr/share/ymcore-testnet
 
-	@mkdir -p ./build/gowaves-testnet-arm64/var/lib/gowaves-testnet/
-	@mkdir -p ./build/gowaves-testnet-arm64/var/log/gowaves-testnet/
+	@mkdir -p ./build/ymcore-testnet-arm64/var/lib/ymcore-testnet/
+	@mkdir -p ./build/ymcore-testnet-arm64/var/log/ymcore-testnet/
 
-	@dpkg-deb --build ./build/gowaves-testnet-arm64
-	@mv ./build/gowaves-testnet-arm64.deb ./build/dist/gowaves-testnet-arm64_${VERSION}.deb
-	@rm -rf ./build/gowaves-testnet-arm64
+	@dpkg-deb --build ./build/ymcore-testnet-arm64
+	@mv ./build/ymcore-testnet-arm64.deb ./build/dist/ymcore-testnet-arm64_${VERSION}.deb
+	@rm -rf ./build/ymcore-testnet-arm64
 
 build-node-stagenet-amd64-deb-package: release-node
 	@mkdir -p build/dist
-	@mkdir -p ./build/gowaves-stagenet-amd64/DEBIAN
-	@sed "s/DEB_VER/$(DEB_VER)/g; s/VERSION/$(VERSION)/g; s/DESCRIPTION/Gowaves Node for StageNet System Service/g; s/PACKAGE/gowaves-stagenet/g; s/ARCH/amd64/g" ./dpkg/control > ./build/gowaves-stagenet-amd64/DEBIAN/control
-	@sed "s/PACKAGE/gowaves-stagenet/g; s/NAME/gowaves/g;" ./dpkg/postinst > ./build/gowaves-stagenet-amd64/DEBIAN/postinst
-	@sed "s/PACKAGE/gowaves-stagenet/g" ./dpkg/postrm > ./build/gowaves-stagenet-amd64/DEBIAN/postrm
-	@sed "s/PACKAGE/gowaves-stagenet/g" ./dpkg/prerm > ./build/gowaves-stagenet-amd64/DEBIAN/prerm
-	@chmod 0644 ./build/gowaves-stagenet-amd64/DEBIAN/control
-	@chmod 0775 ./build/gowaves-stagenet-amd64/DEBIAN/postinst
-	@chmod 0775 ./build/gowaves-stagenet-amd64/DEBIAN/postrm
-	@chmod 0775 ./build/gowaves-stagenet-amd64/DEBIAN/prerm
+	@mkdir -p ./build/ymcore-stagenet-amd64/DEBIAN
+	@sed "s/DEB_VER/$(DEB_VER)/g; s/VERSION/$(VERSION)/g; s/DESCRIPTION/ymcore Node for StageNet System Service/g; s/PACKAGE/ymcore-stagenet/g; s/ARCH/amd64/g" ./dpkg/control > ./build/ymcore-stagenet-amd64/DEBIAN/control
+	@sed "s/PACKAGE/ymcore-stagenet/g; s/NAME/ymcore/g;" ./dpkg/postinst > ./build/ymcore-stagenet-amd64/DEBIAN/postinst
+	@sed "s/PACKAGE/ymcore-stagenet/g" ./dpkg/postrm > ./build/ymcore-stagenet-amd64/DEBIAN/postrm
+	@sed "s/PACKAGE/ymcore-stagenet/g" ./dpkg/prerm > ./build/ymcore-stagenet-amd64/DEBIAN/prerm
+	@chmod 0644 ./build/ymcore-stagenet-amd64/DEBIAN/control
+	@chmod 0775 ./build/ymcore-stagenet-amd64/DEBIAN/postinst
+	@chmod 0775 ./build/ymcore-stagenet-amd64/DEBIAN/postrm
+	@chmod 0775 ./build/ymcore-stagenet-amd64/DEBIAN/prerm
 
-	@mkdir -p ./build/gowaves-stagenet-amd64/lib/systemd/system
-	@sed "s|VERSION|$(VERSION)|g; s|DESCRIPTION|Gowaves Node for StageNet System Service|g; s|PACKAGE|gowaves-stagenet|g; s|EXECUTABLE|node|g; s|PARAMS|-state-path /var/lib/gowaves-stagenet/ -api-address 0.0.0.0:8100 -blockchain-type stagenet|g; s|NAME|gowaves|g" ./dpkg/service.service > ./build/gowaves-stagenet-amd64/lib/systemd/system/gowaves-stagenet.service
+	@mkdir -p ./build/ymcore-stagenet-amd64/lib/systemd/system
+	@sed "s|VERSION|$(VERSION)|g; s|DESCRIPTION|ymcore Node for StageNet System Service|g; s|PACKAGE|ymcore-stagenet|g; s|EXECUTABLE|node|g; s|PARAMS|-state-path /var/lib/ymcore-stagenet/ -api-address 0.0.0.0:8100 -blockchain-type stagenet|g; s|NAME|ymcore|g" ./dpkg/service.service > ./build/ymcore-stagenet-amd64/lib/systemd/system/ymcore-stagenet.service
 
-	@mkdir -p ./build/gowaves-stagenet-amd64/usr/share/gowaves-stagenet
-	@cp ./build/bin/linux-amd64/node ./build/gowaves-stagenet-amd64/usr/share/gowaves-stagenet
+	@mkdir -p ./build/ymcore-stagenet-amd64/usr/share/ymcore-stagenet
+	@cp ./build/bin/linux-amd64/node ./build/ymcore-stagenet-amd64/usr/share/ymcore-stagenet
 
-	@mkdir -p ./build/gowaves-stagenet-amd64/var/lib/gowaves-stagenet/
-	@mkdir -p ./build/gowaves-stagenet-amd64/var/log/gowaves-stagenet/
+	@mkdir -p ./build/ymcore-stagenet-amd64/var/lib/ymcore-stagenet/
+	@mkdir -p ./build/ymcore-stagenet-amd64/var/log/ymcore-stagenet/
 
-	@dpkg-deb --build ./build/gowaves-stagenet-amd64
-	@mv ./build/gowaves-stagenet-amd64.deb ./build/dist/gowaves-stagenet-amd64_${VERSION}.deb
-	@rm -rf ./build/gowaves-stagenet-amd64
+	@dpkg-deb --build ./build/ymcore-stagenet-amd64
+	@mv ./build/ymcore-stagenet-amd64.deb ./build/dist/ymcore-stagenet-amd64_${VERSION}.deb
+	@rm -rf ./build/ymcore-stagenet-amd64
 
 build-node-stagenet-arm64-deb-package: release-node
 	@mkdir -p build/dist
-	@mkdir -p ./build/gowaves-stagenet-arm64/DEBIAN
-	@sed "s/DEB_VER/$(DEB_VER)/g; s/VERSION/$(VERSION)/g; s/DESCRIPTION/Gowaves Node for StageNet System Service/g; s/PACKAGE/gowaves-stagenet/g; s/ARCH/arm64/g" ./dpkg/control > ./build/gowaves-stagenet-arm64/DEBIAN/control
-	@sed "s/PACKAGE/gowaves-stagenet/g; s/NAME/gowaves/g;" ./dpkg/postinst > ./build/gowaves-stagenet-arm64/DEBIAN/postinst
-	@sed "s/PACKAGE/gowaves-stagenet/g" ./dpkg/postrm > ./build/gowaves-stagenet-arm64/DEBIAN/postrm
-	@sed "s/PACKAGE/gowaves-stagenet/g" ./dpkg/prerm > ./build/gowaves-stagenet-arm64/DEBIAN/prerm
-	@chmod 0644 ./build/gowaves-stagenet-arm64/DEBIAN/control
-	@chmod 0775 ./build/gowaves-stagenet-arm64/DEBIAN/postinst
-	@chmod 0775 ./build/gowaves-stagenet-arm64/DEBIAN/postrm
-	@chmod 0775 ./build/gowaves-stagenet-arm64/DEBIAN/prerm
+	@mkdir -p ./build/ymcore-stagenet-arm64/DEBIAN
+	@sed "s/DEB_VER/$(DEB_VER)/g; s/VERSION/$(VERSION)/g; s/DESCRIPTION/ymcore Node for StageNet System Service/g; s/PACKAGE/ymcore-stagenet/g; s/ARCH/arm64/g" ./dpkg/control > ./build/ymcore-stagenet-arm64/DEBIAN/control
+	@sed "s/PACKAGE/ymcore-stagenet/g; s/NAME/ymcore/g;" ./dpkg/postinst > ./build/ymcore-stagenet-arm64/DEBIAN/postinst
+	@sed "s/PACKAGE/ymcore-stagenet/g" ./dpkg/postrm > ./build/ymcore-stagenet-arm64/DEBIAN/postrm
+	@sed "s/PACKAGE/ymcore-stagenet/g" ./dpkg/prerm > ./build/ymcore-stagenet-arm64/DEBIAN/prerm
+	@chmod 0644 ./build/ymcore-stagenet-arm64/DEBIAN/control
+	@chmod 0775 ./build/ymcore-stagenet-arm64/DEBIAN/postinst
+	@chmod 0775 ./build/ymcore-stagenet-arm64/DEBIAN/postrm
+	@chmod 0775 ./build/ymcore-stagenet-arm64/DEBIAN/prerm
 
-	@mkdir -p ./build/gowaves-stagenet-arm64/lib/systemd/system
-	@sed "s|VERSION|$(VERSION)|g; s|DESCRIPTION|Gowaves Node for StageNet System Service|g; s|PACKAGE|gowaves-stagenet|g; s|EXECUTABLE|node|g; s|PARAMS|-state-path /var/lib/gowaves-stagenet/ -api-address 0.0.0.0:8100 -blockchain-type stagenet|g; s|NAME|gowaves|g" ./dpkg/service.service > ./build/gowaves-stagenet-arm64/lib/systemd/system/gowaves-stagenet.service
+	@mkdir -p ./build/ymcore-stagenet-arm64/lib/systemd/system
+	@sed "s|VERSION|$(VERSION)|g; s|DESCRIPTION|ymcore Node for StageNet System Service|g; s|PACKAGE|ymcore-stagenet|g; s|EXECUTABLE|node|g; s|PARAMS|-state-path /var/lib/ymcore-stagenet/ -api-address 0.0.0.0:8100 -blockchain-type stagenet|g; s|NAME|ymcore|g" ./dpkg/service.service > ./build/ymcore-stagenet-arm64/lib/systemd/system/ymcore-stagenet.service
 
-	@mkdir -p ./build/gowaves-stagenet-arm64/usr/share/gowaves-stagenet
-	@cp ./build/bin/linux-arm64/node ./build/gowaves-stagenet-arm64/usr/share/gowaves-stagenet
+	@mkdir -p ./build/ymcore-stagenet-arm64/usr/share/ymcore-stagenet
+	@cp ./build/bin/linux-arm64/node ./build/ymcore-stagenet-arm64/usr/share/ymcore-stagenet
 
-	@mkdir -p ./build/gowaves-stagenet-arm64/var/lib/gowaves-stagenet/
-	@mkdir -p ./build/gowaves-stagenet-arm64/var/log/gowaves-stagenet/
+	@mkdir -p ./build/ymcore-stagenet-arm64/var/lib/ymcore-stagenet/
+	@mkdir -p ./build/ymcore-stagenet-arm64/var/log/ymcore-stagenet/
 
-	@dpkg-deb --build ./build/gowaves-stagenet-arm64
-	@mv ./build/gowaves-stagenet-arm64.deb ./build/dist/gowaves-stagenet-arm64_${VERSION}.deb
-	@rm -rf ./build/gowaves-stagenet-arm64
+	@dpkg-deb --build ./build/ymcore-stagenet-arm64
+	@mv ./build/ymcore-stagenet-arm64.deb ./build/dist/ymcore-stagenet-arm64_${VERSION}.deb
+	@rm -rf ./build/ymcore-stagenet-arm64
